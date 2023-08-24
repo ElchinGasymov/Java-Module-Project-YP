@@ -13,22 +13,31 @@ public class Calculator {
         while (true) {
             System.out.println("Введите название товара.");
             String productName = scanner.next();
-            if (productName.equalsIgnoreCase("Завершить.")) {
-                System.out.println("Вы не ввели ни одного товара.");
-            } else {
-                System.out.println("Введите цену товара.");
-                double ProductPrice = scanner.nextDouble();
-                Product product = new Product(productName, ProductPrice);
-                sum += product.price;
-                allProducts.add(product.name);
-                if (scanner.next().equalsIgnoreCase("Завершить")) {
+            if (productName.equalsIgnoreCase("Завершить")) {
+                break;
+            }
+            System.out.println("Введите цену товара.");
+            while (true) {
+                try {
+                    double productPrice = new Scanner(System.in).nextDouble();
+                    if (productPrice <= 0) {
+                        throw new RuntimeException();
+                    }
+                    Product product = new Product(productName, productPrice);
+                    sum += product.price;
+                    allProducts.add(product.name);
                     break;
+                } catch (RuntimeException e) {
+                    System.out.println("Введите корректное значение цены числом больше 0");
                 }
             }
         }
     }
 
     public static void showAllProducts() {
+        if (allProducts.isEmpty()) {
+            System.out.println("Нет добавленных продуктов");
+        }
         System.out.println("Добавленные товары:");
         for (int i = 0; i < allProducts.size(); i++) {
             System.out.println(allProducts.get(i));
@@ -45,13 +54,13 @@ public class Calculator {
         long lastTwoDigits = rubles % 100;
 
         if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-            return rubles + " рублей";
+            return " рублей";
         } else if (lastDigit == 1) {
-            return rubles + " рубль";
+            return " рубль";
         } else if (lastDigit >= 2 && lastDigit <= 4) {
-            return rubles + " рубля";
+            return " рубля";
         } else {
-            return rubles + " рублей";
+            return " рублей";
         }
     }
 }

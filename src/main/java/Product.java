@@ -6,6 +6,5 @@ public class Product {
         this.name = name;
         this.price = price;
         System.out.println("Товар успешно добавлен");
-        System.out.println("Добавим еще один товар?");
     }
 }
