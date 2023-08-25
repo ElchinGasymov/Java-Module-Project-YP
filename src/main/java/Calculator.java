@@ -11,7 +11,7 @@ public class Calculator {
 
     public static void addProduct() {
         while (true) {
-            System.out.println("Введите название товара.");
+            System.out.println("Введите название товара, или \"завершить\" для выхода.");
             String productName = scanner.next();
             if (productName.equalsIgnoreCase("Завершить")) {
                 break;
@@ -54,13 +54,13 @@ public class Calculator {
         long lastTwoDigits = rubles % 100;
 
         if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-            return " рублей";
+            return "рублей";
         } else if (lastDigit == 1) {
-            return " рубль";
+            return "рубль";
         } else if (lastDigit >= 2 && lastDigit <= 4) {
-            return " рубля";
+            return "рубля";
         } else {
-            return " рублей";
+            return "рублей";
         }
     }
 }

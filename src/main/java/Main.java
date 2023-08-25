@@ -14,7 +14,7 @@ public class Main {
                     Calculator.addProduct();
                     Calculator.showAllProducts();
                 }
-                ShowFinalSum(persons);
+                showFinalSum(persons);
                 break;
             } catch (RuntimeException e) {
                 System.out.println("Введите корректное значение гостей числом больше 1");
@@ -22,9 +22,9 @@ public class Main {
         }
     }
 
-    private static void ShowFinalSum(double persons) {
+    private static void showFinalSum(double persons) {
         double sum = Calculator.returnSum() / persons;
         System.out.printf("Сумма на человека составляет " + "%.2f", sum);
-        System.out.print(Calculator.declineRuble(sum));
+        System.out.print(" " + Calculator.declineRuble(sum));
     }
 }
